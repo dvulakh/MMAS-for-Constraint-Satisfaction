@@ -1,0 +1,24 @@
+╔═════════════╦════════╦════════════════════╦═════════════╦═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║  FLAG NAME  ║  CHAR  ║      ARGUMENT      ║   DEFAULT   ║                                                                 USAGE                                                                 ║
+╠═════════════╬════════╬════════════════════╬═════════════╬═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║ --size      ║   -m   ║ Positive integer   ║ ----        ║ Problem size; solution candidates will be permutations of the integers [1, m]                                                         ║
+║ --threads   ║   -n   ║ Positive integer   ║ 4           ║ Number of worker threads                                                                                                              ║
+║ --lambda    ║   -L   ║ Integer            ║ -1          ║ Trail length value λ, the suffix length for pheromone association; λ < 1 enables arbitrary-length pheromone association               ║
+║ --ants      ║   -N   ║ Positive integer   ║ 10          ║ Number of ants in the colony; queen performs pheromone updates after every N iterations                                               ║
+║ --alpha     ║   -A   ║ Real number        ║ 2           ║ Relative weight α of pheromone value τ on ant behavior                                                                                ║
+║ --beta      ║   -B   ║ Real number        ║ 25          ║ Relative weight β of heuristic value η on ant behavior                                                                                ║
+║ --gamma     ║   -G   ║ Real number        ║ 0.1         ║ Relative weight γ of trail length value λ on ant behavior                                                                             ║
+║ --rho       ║   -v   ║ Real number        ║ 0.01        ║ Rate of pheromone evaporation ρ                                                                                                       ║
+║ --p0        ║   -p   ║ Real number        ║ 0           ║ Probability p₀ of choosing highest-pheromone path                                                                                     ║
+║ --tmin      ║  ----  ║ Real number        ║ 2           ║ Lowest possible pheromone value                                                                                                       ║
+║ --tmax      ║  ----  ║ Real number        ║ 10          ║ Highest possible pheromone value                                                                                                      ║
+║ --theta     ║   -Q   ║ Integer            ║ 5           ║ Quality threshold ϑ; ϑ < 1 disables quality threshold                                                                                 ║
+║ --regicide  ║   -t   ║ Integer            ║ -1          ║ Time limit; MMAS will kill queen process after t second, even if no solution is found; no time limit if t < 0                         ║
+║ --restart   ║   -R   ║ ----               ║ ----        ║ Restart from file                                                                                                                     ║
+║ --map       ║   -M   ║ ----               ║ ----        ║ Log pheromone map entries                                                                                                             ║
+║ --fout      ║   -r   ║ File path          ║ “mmas.out”  ║ Path to restart file; MMAS will restart from here if the -R flag is used and will append new map entries if the -M flag is used       ║
+║ --period    ║   -T   ║ Positive integer   ║ 1           ║ Queen logs map once every T pheromone updates                                                                                         ║
+║ --data      ║   -D   ║ ----               ║ ----        ║ Log individual ant path data                                                                                                          ║
+║ --work      ║   -W   ║ ----               ║ ----        ║ Log detailed information about individual ant work                                                                                    ║
+║ --trie      ║  ----  ║ ----               ║ ----        ║ Insert ant paths into trie (not recommended)                                                                                          ║
+╚═════════════╩════════╩════════════════════╩═════════════╩═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
