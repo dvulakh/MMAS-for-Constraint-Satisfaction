@@ -23,7 +23,7 @@ public:
 
 /****** THIS IS THE NAME OF THE CLASS YOU SHOULD REFERENCE IN MMAS.CPP ******/
 // You probably will not need to change this line (except possibly to rename
-// template_* to something more meaningful, such as the problem it represents.
+// template_* to something more meaningful, such as the problem it represents).
 // This line creates a class that inherits the problem rules from the class you
 // define above and the mechanism of pheromone storage we implement in the other
 // source files.
