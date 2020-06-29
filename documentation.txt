@@ -1,8 +1,12 @@
+
+ COMMAND LINE FLAGS
 ╔═════════════╦════════╦════════════════════╦═════════════╦═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 ║  FLAG NAME  ║  CHAR  ║      ARGUMENT      ║   DEFAULT   ║                                                                 USAGE                                                                 ║
 ╠═════════════╬════════╬════════════════════╬═════════════╬═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
-║ --size      ║   -m   ║ Positive integer   ║ ----        ║ Problem size; solution candidates will be permutations of the integers [1, m]                                                         ║
+║ --size      ║   -l   ║ Positive integer   ║ ----        ║ Problem size; solution candidates will be permutations of length l                                                                    ║
+║ --domain    ║   -m   ║ Positive integer   ║ ----        ║ Problem domain; solution candidates will be permutations of the integers [1, m]                                                       ║
 ║ --threads   ║   -n   ║ Positive integer   ║ 4           ║ Number of worker threads                                                                                                              ║
+║ --cons      ║   -C   ║ File path          ║ “cons.in”   ║ Path to constraint file (for problems that read additional constraint info from file)                                                 ║
 ║ --lambda    ║   -L   ║ Integer            ║ -1          ║ Trail length value λ, the suffix length for pheromone association; λ < 1 enables arbitrary-length pheromone association               ║
 ║ --ants      ║   -N   ║ Positive integer   ║ 10          ║ Number of ants in the colony; queen performs pheromone updates after every N iterations                                               ║
 ║ --alpha     ║   -A   ║ Real number        ║ 2           ║ Relative weight α of pheromone value τ on ant behavior                                                                                ║
@@ -22,3 +26,17 @@
 ║ --work      ║   -W   ║ ----               ║ ----        ║ Log detailed information about individual ant work                                                                                    ║
 ║ --trie      ║  ----  ║ ----               ║ ----        ║ Insert ant paths into trie (not recommended)                                                                                          ║
 ╚═════════════╩════════╩════════════════════╩═════════════╩═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+ CUSTOM PROBLEM GRAPHS
+
+The MMAS framework can solve any problem presented as a construction graph. See
+the files template_graph.h and template_graph.cpp for detailed information on
+how to specify problems for the ant system and the file MMAS.cpp for information
+on how to choose which problem to solve (by default, MMAS will solve the problem
+specified by template_graph, so you can modify the template files directly).
+
+See the files costas_graph*, sat_graph*, and gcol_graph for examples of CSPs
+specified for the ant system (respectively, the Costas-array problem, the
+Boolean-satisfiability problem, and the vertex-coloring problem).
+

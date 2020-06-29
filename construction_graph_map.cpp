@@ -6,7 +6,7 @@
 #define MOD_VAL 1000000007LL
 #define INF 100000
 
-#define START_HASH(walk, nxt) vert reference = nxt; string hsh = relative ? "" : to_string(nxt);
+#define START_HASH(walk, nxt) vert reference = nxt; string hsh = (circular ? "" : to_string(walk.first->size())) + (relative ? "" : to_string(nxt));
 #define STEP_HASH(walk, nxt) hsh += (relative && it == walk.first->rbegin() ? "" : " ") + to_string(*it + (relative ? -1 : 0) * reference);
 
 typedef construction_graph::iterator cit;

@@ -16,6 +16,6 @@ public:
 
 class costas_graph_map_mutex : public construction_graph_map_mutex, public costas_graph { public: costas_graph_map_mutex(int nvar); };
 class costas_graph_arr : public construction_graph_arr, public costas_graph { public: costas_graph_arr(int nvar, int tail); };
-class costas_graph_map : public construction_graph_map, public costas_graph { public: costas_graph_map(int nvar, int plen); };
+class costas_graph_map : public construction_graph_map, public costas_graph { public: costas_graph_map(int nvar, int maxval, int plen, string cons); };
 
 #endif

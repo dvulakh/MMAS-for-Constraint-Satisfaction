@@ -42,6 +42,6 @@ bool costas::hard_constraint(path& walk, vertex& nxt)
 }
 
 /*** IMPLEMENTATIONS ***/
-costas_graph_map::costas_graph_map(int nvar, int plen) : construction_graph_map(nvar, nvar, plen) { this->relative = true; }
+costas_graph_map::costas_graph_map(int nvar, int maxval, int plen, string cons) : construction_graph_map(nvar, nvar, plen) { this->relative = true; }
 costas_graph_map_mutex::costas_graph_map_mutex(int nvar) : construction_graph_map_mutex(nvar, nvar) {}
 costas_graph_arr::costas_graph_arr(int nvar, int tail) : construction_graph_arr(nvar, nvar, tail) {}

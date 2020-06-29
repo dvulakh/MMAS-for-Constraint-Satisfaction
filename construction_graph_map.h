@@ -38,6 +38,7 @@ public:
 	iterator begin();
 	iterator end();
 	bool relative;
+	bool circular;
 	void init();
 	int plen;
 };
