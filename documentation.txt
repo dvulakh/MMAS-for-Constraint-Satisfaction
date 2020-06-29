@@ -36,7 +36,7 @@ how to specify problems for the ant system and the file MMAS.cpp for information
 on how to choose which problem to solve (by default, MMAS will solve the problem
 specified by template_graph, so you can modify the template files directly).
 
-See the files costas_graph*, sat_graph*, and gcol_graph for examples of CSPs
+See the files costas_graph*, sat_graph*, and gcol_graph* for examples of CSPs
 specified for the ant system (respectively, the Costas-array problem, the
 Boolean-satisfiability problem, and the vertex-coloring problem).
 
