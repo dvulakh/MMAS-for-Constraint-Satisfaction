@@ -63,7 +63,7 @@ template_graph_map::template_graph_map(int nvar, int max_val, int plen, string c
 	// mation only with sequences of values and not their location in the
 	// permutation.
 	this->circular = false;
-	// If you need to read constraints from a file, use cons.
+	// If you need to read constraints from a file, use the file path cons.
 	// See sat_graph.cpp and gcol_graph.cpp for examples.
 	// (read info from cons)
 }
