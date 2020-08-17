@@ -86,17 +86,22 @@ an MMAS executable is invoked from the command line.
 --regicide -t   [integer]  
                 Time limit; MMAS will kill queen process after t second, even if
                 no solution is found; no time limit if t < 0 (default -1)  
---restart  -R   Restart from file  
---map      -M   Log pheromone map entries  
+--restart  -R  
+                Restart from file  
+--map      -M  
+                Log pheromone map entries  
 --fout     -r   [file path]  
                 Path to restart file; MMAS will restart from here if the -R flag
                 is used and will append new map entries if the -M flag is used
                 (default "mmas.out")  
 --period   -T   [positive integer]  
                 Queen logs map once every T pheromone updates (default 1)  
---data     -D   Log individual ant path data  
---work     -W   Log detailed information about individual ant work  
---trie          Insert ant paths into trie (not recommended)  
+--data     -D  
+                Log individual ant path data  
+--work     -W  
+                Log detailed information about individual ant work  
+--trie  
+                Insert ant paths into trie (not recommended)  
 
 ### Graph Options
 The following options can be used to pass information about a problem size or
