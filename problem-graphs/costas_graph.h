@@ -10,8 +10,8 @@
 class costas_graph : public csp_graph
 {
 public:
-	bool hard_constraint(path&, vertex&);
-	cost cost_of(path&, vertex&);
+    bool hard_constraint(path&, vertex&);
+    cost cost_of(path&, vertex&);
 };
 
 class costas_graph_map_mutex : public construction_graph_map_mutex, public costas_graph

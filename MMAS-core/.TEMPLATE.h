@@ -9,16 +9,16 @@
 class PROGSUFF : public csp_graph
 {
 public:
-	// Defines hard constraints
-	// Return whether a new vertex may be added to a path
-	// Ants never violate the hard constraints
-	bool hard_constraint(path&, vertex&);
-	// Defines cost incurred by adding new vertex to path
-	// For CSPs, usually the number of soft constraint violations
-	cost cost_of(path&, vertex&);
-	// If you need any private members for your problem, add them here
-	// See gcol_graph and sat_graph for examples of problems that use
-	// private members to assess cost
+    // Defines hard constraints
+    // Return whether a new vertex may be added to a path
+    // Ants never violate the hard constraints
+    bool hard_constraint(path&, vertex&);
+    // Defines cost incurred by adding new vertex to path
+    // For CSPs, usually the number of soft constraint violations
+    cost cost_of(path&, vertex&);
+    // If you need any private members for your problem, add them here
+    // See gcol_graph and sat_graph for examples of problems that use
+    // private members to assess cost
 };
 
 /************** THIS IS THE FINAL DEFINITION THE ANTS WILL USE **************/

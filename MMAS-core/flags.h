@@ -18,13 +18,13 @@ typedef pair<int, function<void(vector<string>)>> flag_key;
 // Structure for reading command-line-flag input
 struct flag_reader
 {
-	unordered_map<char, string> full_names;
-	unordered_map<string, flag_key> exec;
-	flag_reader() {}
-	/// Add flag definition
-	void add_flag(string name, char nick, int narg, function<void(vector<string>)> eff);
-	/// Read input with flags given
-	int read_flags(int narg, char** args);
+    unordered_map<char, string> full_names;
+    unordered_map<string, flag_key> exec;
+    flag_reader() {}
+    /// Add flag definition
+    void add_flag(string name, char nick, int narg, function<void(vector<string>)> eff);
+    /// Read input with flags given
+    int read_flags(int narg, char** args);
 };
 
 #endif

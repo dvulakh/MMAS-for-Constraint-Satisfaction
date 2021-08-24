@@ -20,8 +20,8 @@
 // ant system and map-based construction graph.
 cost PROGSUFF::cost_of(path& walk, vertex& nxt)
 {
-	// Return the cost
-	return 0;
+    // Return the cost
+    return 0;
 }
 
 // Return whether new vertex may be added to path (hard constraint in MMAS).
@@ -36,8 +36,8 @@ cost PROGSUFF::cost_of(path& walk, vertex& nxt)
 // be added to the walk.
 bool PROGSUFF::hard_constraint(path& walk, vertex& nxt)
 {
-	// Right now, no hard constraints
-	return true;
+    // Right now, no hard constraints
+    return true;
 }
 
 // The constructor of your problem graph.
@@ -47,22 +47,22 @@ bool PROGSUFF::hard_constraint(path& walk, vertex& nxt)
 // Argument #3 (plen) is the pheromone tail length requested.
 // Argument #4 (cons) is the name of a file containing constraint information.
 CLASS::CLASS(int nvar, int max_val, int plen, string cons) :
-	// Constructor chain: let the map graph ancestor set up what it needs to.
-	// Forward the number of variables and the domain size to the map graph
-	// constructor. Note that you do not *have* to use the user-requested
-	// values for both (see costas_graph.cpp and sat_graph.cpp for examples).
-	construction_graph_map(nvar, max_val, plen) {
-	// If relative pheromone storage can be applied to your problem, set this
-	// to true. Relative pheromone storage will associate pheromone infor-
-	// mation with a permutation's difference array rather than the permut-
-	// ation itself.
-	this->relative = false;
-	// If circular pheromone storage can be applied to your problem, set this
-	// to true. Circular pheromone storage will associate pheromone infor-
-	// mation only with sequences of values and not their location in the
-	// permutation.
-	this->circular = false;
-	// If you need to read constraints from a file, use the path cons.
-	// See sat_graph.cpp and gcol_graph.cpp for examples.
-	// (read info from cons)
+    // Constructor chain: let the map graph ancestor set up what it needs to.
+    // Forward the number of variables and the domain size to the map graph
+    // constructor. Note that you do not *have* to use the user-requested
+    // values for both (see costas_graph.cpp and sat_graph.cpp for examples).
+    construction_graph_map(nvar, max_val, plen) {
+    // If relative pheromone storage can be applied to your problem, set this
+    // to true. Relative pheromone storage will associate pheromone infor-
+    // mation with a permutation's difference array rather than the permut-
+    // ation itself.
+    this->relative = false;
+    // If circular pheromone storage can be applied to your problem, set this
+    // to true. Circular pheromone storage will associate pheromone infor-
+    // mation only with sequences of values and not their location in the
+    // permutation.
+    this->circular = false;
+    // If you need to read constraints from a file, use the path cons.
+    // See sat_graph.cpp and gcol_graph.cpp for examples.
+    // (read info from cons)
 }

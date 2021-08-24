@@ -12,11 +12,11 @@
 class gcol_graph : public csp_graph
 {
 public:
-	bool hard_constraint(path&, vertex&);
-	cost cost_of(path&, vertex&);
-	void gcol_init(string cons);
-	vector<set<int>> adj;
-	int ncolor;
+    bool hard_constraint(path&, vertex&);
+    cost cost_of(path&, vertex&);
+    void gcol_init(string cons);
+    vector<set<int>> adj;
+    int ncolor;
 };
 
 class gcol_graph_map : public construction_graph_map, public gcol_graph

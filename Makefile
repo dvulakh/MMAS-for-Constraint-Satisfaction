@@ -37,7 +37,7 @@ $(PSET)/$(PROG).h : $(CORE)/* $(PROBS)/$(PROG)$(SUFF).h $(PROBS)/$(PROG)$(SUFF).
 	@printf "/*** PROBLEM_CONFIG.H: MAKEFILE-GENERATED ***/\n\n\
 	#ifndef P_CONFIG_H\n#define P_CONFIG_H\n\n\
 	#include \"../$(PROBS)/$(PROG)$(SUFF).h\"\n\
-	typedef $(CLASS) problem_to_solve;\n\n#endif" >	$(PSET)/$(PROG).h
+	typedef $(CLASS) problem_to_solve;\n\n#endif" > $(PSET)/$(PROG).h
 	@cp $(PSET)/$(PROG).h $(PSET)/$(CONF)
 # Template creation recipe
 template :
