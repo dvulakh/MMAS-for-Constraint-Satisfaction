@@ -12,42 +12,59 @@ CORE = ./MMAS-core
 NAME = MMAS
 
 # Target executable name
-PROBS?=./problem-graphs
-EXEC = mmas
-PROG?= template
-SUFF?= _graph
-CLASS?=$(PROG)$(SUFF)_map
+PROBS ?= ./problem-graphs
+EXEC   = mmas
+PROG  ?= template
+SUFF  ?=_graph
+CLASS ?= $(PROG)$(SUFF)_map
 
-# Compile recipe
+# Default compile recipe
 compile : bin/$(EXEC)-$(PROG)
-bin/$(EXEC)-$(PROG) : $(PSET)/$(PROG).h
-	@mkdir -p bin
-	@g++ -w -pthread -march=native -std=c++17 $(CORE)/*.cpp \
-	$(PROBS)/$(PROG)$(SUFF).cpp -o bin/$(EXEC)-$(PROG) -latomic 
+
 # Install recipe
 install : /usr/share/bin/$(EXEC)-$(PROG)
-/usr/share/bin/$(EXEC)-$(PROG) : $(PSET)/$(PROG).h
-	@g++ -w -pthread -std=c++17 $(CORE)/*.cpp \
-	$(PROBS)/$(PROG)$(SUFF).cpp -o /usr/share/bin/$(EXEC)-$(PROG) -latomic 
 uninstall :
-	@rm -r /usr/share/bin$(EXEC)*
+	@rm -r /usr/share/bin/$(EXEC)*
+
+# General compilation
+%/$(EXEC)-$(PROG) : $(PSET)/$(PROG).h
+	@mkdir -p $*
+	@g++ -Ofast -w -pthread -march=native -std=c++17 \
+	    $(CORE)/*.cpp $(PROBS)/$(PROG)$(SUFF).cpp \
+	    -o $*/$(EXEC)-$(PROG) \
+	    -latomic
+
 # Problem header recipe (prereq)
-$(PSET)/$(PROG).h : $(CORE)/* $(PROBS)/$(PROG)$(SUFF).h $(PROBS)/$(PROG)$(SUFF).cpp
+$(PSET)/$(PROG).h : \
+	    $(CORE)/* \
+	    $(PROBS)/$(PROG)$(SUFF).h \
+	    $(PROBS)/$(PROG)$(SUFF).cpp
 	@mkdir -p $(PSET)
-	@printf "/*** PROBLEM_CONFIG.H: MAKEFILE-GENERATED ***/\n\n\
-	#ifndef P_CONFIG_H\n#define P_CONFIG_H\n\n\
-	#include \"../$(PROBS)/$(PROG)$(SUFF).h\"\n\
-	typedef $(CLASS) problem_to_solve;\n\n#endif" > $(PSET)/$(PROG).h
+	@printf \
+	    "/*** PROBLEM_CONFIG.H: MAKEFILE-GENERATED ***/\n\n\
+		#ifndef P_CONFIG_H\n#define P_CONFIG_H\n\n\
+		#include \"../$(PROBS)/$(PROG)$(SUFF).h\"\n\
+		typedef $(CLASS) problem_to_solve;\n\n#endif" \
+	    > $(PSET)/$(PROG).h
 	@cp $(PSET)/$(PROG).h $(PSET)/$(CONF)
 # Template creation recipe
 template :
 	@mkdir -p $(PROBS)
-	@[ ! -f $(PROBS)/$(PROG)$(SUFF).cpp ] && cat $(CORE)/$(TEMPLATE).cpp |\
-	sed "s/PROG/$(PROG)/g; s/SUFF/$(SUFF)/g; s/CLASS/$(CLASS)/g" >\
-	$(PROBS)/$(PROG)$(SUFF).cpp ||\
-	echo "Error: $(PROBS)/$(PROG)$(SUFF).cpp already exists!"
-	@[ ! -f $(PROBS)/$(PROG)$(SUFF).h ] && cat $(CORE)/$(TEMPLATE).h |\
-	sed "s/UPROG/`echo $(PROG) | tr [a-z] [A-Z]`/g;\
-	s/PROG/$(PROG)/g; s/SUFF/$(SUFF)/g; s/CLASS/$(CLASS)/g" >\
-	$(PROBS)/$(PROG)$(SUFF).h ||\
-	echo "Error: $(PROBS)/$(PROG)$(SUFF).h already exists!"
+	@[ ! -f $(PROBS)/$(PROG)$(SUFF).cpp ] \
+	    && cat $(CORE)/$(TEMPLATE).cpp \
+		| sed "s/PROG/$(PROG)/g; s/SUFF/$(SUFF)/g;\
+		    s/CLASS/$(CLASS)/g" \
+		> $(PROBS)/$(PROG)$(SUFF).cpp \
+	    || echo \
+		"Error: $(PROBS)/$(PROG)$(SUFF).cpp already exists!"
+	@[ ! -f $(PROBS)/$(PROG)$(SUFF).h ] \
+	    && cat $(CORE)/$(TEMPLATE).h \
+		| sed \
+		    "s/UPROG/`echo $(PROG) | tr [a-z] [A-Z]`/g;\
+		    s/PROG/$(PROG)/g;\
+		    s/SUFF/$(SUFF)/g;\
+		    s/CLASS/$(CLASS)/g" \
+		> $(PROBS)/$(PROG)$(SUFF).h \
+	    || echo \
+		"Error: $(PROBS)/$(PROG)$(SUFF).h already exists!"
+
