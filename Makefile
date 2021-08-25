@@ -22,13 +22,13 @@ CLASS?=$(PROG)$(SUFF)_map
 compile : bin/$(EXEC)-$(PROG)
 bin/$(EXEC)-$(PROG) : $(PSET)/$(PROG).h
 	@mkdir -p bin
-	@g++ -w -latomic -pthread -std=c++17 $(CORE)/*.cpp \
-	$(PROBS)/$(PROG)$(SUFF).cpp -o bin/$(EXEC)-$(PROG)
+	@g++ -w -pthread -march=native -std=c++17 $(CORE)/*.cpp \
+	$(PROBS)/$(PROG)$(SUFF).cpp -o bin/$(EXEC)-$(PROG) -latomic 
 # Install recipe
 install : /usr/share/bin/$(EXEC)-$(PROG)
 /usr/share/bin/$(EXEC)-$(PROG) : $(PSET)/$(PROG).h
-	@g++ -w -latomic -pthread -std=c++17 $(CORE)/*.cpp \
-	$(PROBS)/$(PROG)$(SUFF).cpp -o /usr/share/bin/$(EXEC)-$(PROG)
+	@g++ -w -pthread -std=c++17 $(CORE)/*.cpp \
+	$(PROBS)/$(PROG)$(SUFF).cpp -o /usr/share/bin/$(EXEC)-$(PROG) -latomic 
 uninstall :
 	@rm -r /usr/share/bin$(EXEC)*
 # Problem header recipe (prereq)
